@@ -1,0 +1,8 @@
+pytest
+pytest-cov
+Django==3.1.7
+djangorestframework==3.12.2
+redis
+django-redis
+celery
+social-auth-app-django

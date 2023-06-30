@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - 8000:8000
+    volumes:
+      - ./app:/app
+    depends_on:
+      - redis
+    command: >
+      sh -c "pip freeze &&
+      python manage.py runserver 0.0.0.0:8000"
+#celery -A back_groud_tasks beat --loglevel=info"
+# sh -c "pip freeze &&
+# celery -A back_groud_tasks worker --loglevel=info --detach &&
+# python manage.py runserver 0.0.0.0:8000"
+
+
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
